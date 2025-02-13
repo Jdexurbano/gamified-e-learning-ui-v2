@@ -19,7 +19,10 @@ import AdminStudentPage from "./pages/admin/student/AdminStudentPage";
 import FindMissingLetter from "./pages/games/FindMissingLetter";
 import NameTheColor from "./pages/games/NameTheColor";
 import CountTheFruit from "./pages/games/CountTheFruit";
-
+import StudentLessonsPage from "./pages/student/lessons/StudentLessonsPage";
+import WatchVideo from "./pages/student/lessons/WatchVideo";
+import TeacherLessonsPage from "./pages/teacher/lessons/TeacherLessonsPage";
+import ActivityHistoryPage from "./pages/student/acitivity_history/ActivityHistoryPage";
 function App() {
   return (
     <>
@@ -31,6 +34,10 @@ function App() {
             path="student/announcement"
             element={<StudentAnnouncementPage />}
           />
+          <Route path="student/lessons" element={<StudentLessonsPage />} />
+          <Route path="student/watch/:videoId" element={<WatchVideo />} />
+
+          <Route path="student/history" element={<ActivityHistoryPage />} />
         </Route>
 
         {/* teachers route */}
@@ -42,6 +49,7 @@ function App() {
             element={<TeacherAnnouncementPage />}
           />
           <Route path="teacher/courses" element={<TeacherCoursesPage />} />
+          <Route path="teacher/lessons" element={<TeacherLessonsPage />} />
         </Route>
 
         {/* admin routes */}
