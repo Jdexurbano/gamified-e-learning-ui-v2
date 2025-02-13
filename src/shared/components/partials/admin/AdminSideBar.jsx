@@ -37,7 +37,7 @@ function AdminSideBar() {
       route: "/admin/announcement",
     },
     {
-      name: "Courses",
+      name: "Activities",
       icon: <FaGamepad size={24} color="white" />,
       route: "/admin/courses",
     },

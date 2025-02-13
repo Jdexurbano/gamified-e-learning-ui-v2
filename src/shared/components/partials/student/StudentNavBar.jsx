@@ -12,7 +12,7 @@ function StudentNavBar() {
 
   const links = [
     {
-      name: "Courses",
+      name: "Activities",
       route: "/student/home",
     },
     {
@@ -22,6 +22,10 @@ function StudentNavBar() {
     {
       name: "Activity History",
       route: "/student/history",
+    },
+    {
+      name: "Lessons",
+      route: "/student/lessons",
     },
   ];
   return (
