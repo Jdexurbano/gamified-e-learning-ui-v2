@@ -6,6 +6,8 @@ import {
   FaGamepad,
   FaArrowRightFromBracket,
   FaBook,
+  FaChartColumn,
+  FaFilm,
 } from "react-icons/fa6";
 
 function TeacherSideBar() {
@@ -39,9 +41,14 @@ function TeacherSideBar() {
       route: "/teacher/courses",
     },
     {
-      name: "Lessons",
-      icon: <FaBook size={24} color="white" />,
-      route: "/teacher/lessons",
+      name: "Leaderboard",
+      icon: <FaChartColumn size={24} color="white" />,
+      route: "/teacher/leaderboard",
+    },
+    {
+      name: "Videos",
+      icon: <FaFilm size={24} color="white" />,
+      route: "/teacher/videos",
     },
   ];
   return (

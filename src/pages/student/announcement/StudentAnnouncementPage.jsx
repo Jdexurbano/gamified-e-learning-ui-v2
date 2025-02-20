@@ -33,7 +33,7 @@ function StudentAnnouncementPage() {
   }, []);
   return (
     <>
-      <main className="w-full flex justify-center items-center p-6">
+      <main className="w-full flex justify-between items-start p-6 pt-20">
         <Card className="w-full max-w-6xl overflow-hidden shadow-lg rounded-xl">
           <div className="bg-purple-700 text-white text-lg font-bold py-4 px-6 rounded-t-xl">
             Announcements

@@ -35,7 +35,7 @@ function TeacherLessonsPage() {
       >
         <div className=" flex justify-between items-center mb-6">
           <h1 className="text-3xl sm:text-4xl font-bold text-purple-700">
-            Lessons
+            Videos
           </h1>
 
           <Button
@@ -44,7 +44,7 @@ function TeacherLessonsPage() {
             onClick={handleOpen}
           >
             <FaBook size={18} />
-            Add Lessons
+            Add Videos
           </Button>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -73,7 +73,7 @@ function TeacherLessonsPage() {
           className="fixed top-5 right-5 w-72"
           animate={{ mount: { x: 0 }, unmount: { x: 50 } }}
         >
-          Student has been added successfully!
+          Lesson has been added successfully!
         </Alert>
       </main>
     </>

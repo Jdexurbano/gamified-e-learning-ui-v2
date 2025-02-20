@@ -11,12 +11,19 @@ import {
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa6";
+import axios from "axios";
+import { PORT } from "../../utils/constant";
 const words = [
   { word: "apple", missing: "p" },
   { word: "banana", missing: "n" },
   { word: "grape", missing: "a" },
   { word: "orange", missing: "g" },
   { word: "peach", missing: "c" },
+  { word: "cherry", missing: "r" },
+  { word: "melon", missing: "o" },
+  { word: "kiwi", missing: "w" },
+  { word: "mango", missing: "g" },
+  { word: "lemon", missing: "m" },
 ];
 
 function FindMissingLetter() {
@@ -26,9 +33,26 @@ function FindMissingLetter() {
   const [selectedLetter, setSelectedLetter] = useState(null);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const handleFinal = () => {
-    handleOpen();
-    setScore(0);
+  const handleFinal = async (e) => {
+    e.preventDefault();
+    const payload = {
+      game: "Find the missing letter",
+      score: score,
+    };
+
+    try {
+      const response = await axios.post(`${PORT}/activities`, payload, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      handleOpen();
+      setScore(0);
+    } catch (error) {
+      console.error(error);
+    }
   };
   const { word, missing } = words[currentWordIndex];
   const options = [

@@ -23,6 +23,9 @@ import StudentLessonsPage from "./pages/student/lessons/StudentLessonsPage";
 import WatchVideo from "./pages/student/lessons/WatchVideo";
 import TeacherLessonsPage from "./pages/teacher/lessons/TeacherLessonsPage";
 import ActivityHistoryPage from "./pages/student/acitivity_history/ActivityHistoryPage";
+import FruitLesson from "./pages/student/lesson/FruitLesson";
+import StudentMainLessonPage from "./pages/student/lesson/StudentMainLessonPage";
+import TeacherLeaderBoard from "./pages/teacher/leaderboard/TeacherLeaderBoard";
 function App() {
   return (
     <>
@@ -34,10 +37,12 @@ function App() {
             path="student/announcement"
             element={<StudentAnnouncementPage />}
           />
-          <Route path="student/lessons" element={<StudentLessonsPage />} />
+          <Route path="student/videos" element={<StudentLessonsPage />} />
           <Route path="student/watch/:videoId" element={<WatchVideo />} />
 
           <Route path="student/history" element={<ActivityHistoryPage />} />
+          <Route path="student/lessons" element={<StudentMainLessonPage />} />
+          <Route path="student/fruitlesson" element={<FruitLesson />} />
         </Route>
 
         {/* teachers route */}
@@ -49,7 +54,8 @@ function App() {
             element={<TeacherAnnouncementPage />}
           />
           <Route path="teacher/courses" element={<TeacherCoursesPage />} />
-          <Route path="teacher/lessons" element={<TeacherLessonsPage />} />
+          <Route path="teacher/leaderboard" element={<TeacherLeaderBoard />} />
+          <Route path="teacher/videos" element={<TeacherLessonsPage />} />
         </Route>
 
         {/* admin routes */}

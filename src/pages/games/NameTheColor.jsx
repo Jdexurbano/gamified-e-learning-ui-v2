@@ -9,7 +9,8 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { motion } from "framer-motion";
-
+import axios from "axios";
+import { PORT } from "../../utils/constant";
 const colors = [
   { name: "Red", code: "#FF0000" },
   { name: "Blue", code: "#0000FF" },
@@ -17,6 +18,10 @@ const colors = [
   { name: "Yellow", code: "#FFFF00" },
   { name: "Purple", code: "#800080" },
   { name: "Orange", code: "#FFA500" },
+  { name: "Pink", code: "#FFC0CB" },
+  { name: "Cyan", code: "#00FFFF" },
+  { name: "Brown", code: "#A52A2A" },
+  { name: "Gray", code: "#808080" },
 ];
 
 function NameTheColor() {
@@ -26,9 +31,26 @@ function NameTheColor() {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const handleFinal = () => {
-    handleOpen();
-    setScore(0);
+  const handleFinal = async (e) => {
+    e.preventDefault();
+    const payload = {
+      game: "Name the color",
+      score: score,
+    };
+
+    try {
+      const response = await axios.post(`${PORT}/activities`, payload, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      handleOpen();
+      setScore(0);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const { name, code } = colors[currentColorIndex];

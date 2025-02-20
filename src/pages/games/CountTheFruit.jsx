@@ -9,12 +9,31 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { motion } from "framer-motion";
-
+import axios from "axios";
+import { PORT } from "../../utils/constant";
 const fruits = [
   { name: "Apples", emoji: "🍎", count: Math.floor(Math.random() * 10) + 1 },
   { name: "Bananas", emoji: "🍌", count: Math.floor(Math.random() * 10) + 1 },
   { name: "Oranges", emoji: "🍊", count: Math.floor(Math.random() * 10) + 1 },
   { name: "Grapes", emoji: "🍇", count: Math.floor(Math.random() * 10) + 1 },
+  {
+    name: "Strawberries",
+    emoji: "🍓",
+    count: Math.floor(Math.random() * 10) + 1,
+  },
+  {
+    name: "Watermelons",
+    emoji: "🍉",
+    count: Math.floor(Math.random() * 10) + 1,
+  },
+  { name: "Cherries", emoji: "🍒", count: Math.floor(Math.random() * 10) + 1 },
+  { name: "Peaches", emoji: "🍑", count: Math.floor(Math.random() * 10) + 1 },
+  {
+    name: "Pineapples",
+    emoji: "🍍",
+    count: Math.floor(Math.random() * 10) + 1,
+  },
+  { name: "Lemons", emoji: "🍋", count: Math.floor(Math.random() * 10) + 1 },
 ];
 
 function CountTheFruit() {
@@ -24,9 +43,27 @@ function CountTheFruit() {
   const [inputValue, setInputValue] = useState("");
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const handleFinal = () => {
-    handleOpen();
-    setScore(0);
+
+  const handleFinal = async (e) => {
+    e.preventDefault();
+    const payload = {
+      game: "Count the fruit",
+      score: score,
+    };
+
+    try {
+      const response = await axios.post(`${PORT}/activities`, payload, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      handleOpen();
+      setScore(0);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const { name, emoji, count } = fruits[currentFruitIndex];
